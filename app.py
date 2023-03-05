@@ -18,6 +18,11 @@ def restart_tarkov_bot(message: types.Message):
             bot.reply_to(message, "Возникла ошибка")
 
 
+@bot.message_handler(commands=["ping"])
+def ping(message: types.Message):
+    bot.reply_to(message, 'pong')
+
+
 if __name__ == '__main__':
     bot.infinity_polling()
 
