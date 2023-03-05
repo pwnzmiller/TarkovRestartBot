@@ -8,7 +8,7 @@ from config import bot
 @bot.message_handler(commands=["restart"])
 def restart_tarkov_bot(message: types.Message):
     try:
-        subprocess.Popen(["sh", "docker run hello-world"], shell=False)
+        subprocess.Popen(["script.sh"], shell=False)
     except:
         bot.reply_to(message, 'Ошибка при выполнении рестарта')
 
