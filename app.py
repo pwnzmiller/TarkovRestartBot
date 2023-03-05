@@ -2,18 +2,20 @@ import subprocess
 
 from telebot import types
 
-from config import bot
+from config import bot, users
 
 
 @bot.message_handler(commands=["restart"])
 def restart_tarkov_bot(message: types.Message):
-    LINE = ''
+    if message.from_user.id in users:
+        try:
+            proc = subprocess.Popen(["sh", "script.sh"], shell=False, stdout=subprocess.PIPE)
 
-    proc = subprocess.Popen(["sh", "script.sh"], shell=False, stdout=subprocess.PIPE)
+            output = proc.stdout.read()
 
-    output = proc.stdout.read()
-
-    bot.reply_to(message, output)
+            bot.reply_to(message, output)
+        except:
+            bot.reply_to(message, "Возникла ошибка")
 
 
 if __name__ == '__main__':
