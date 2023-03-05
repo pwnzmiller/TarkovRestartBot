@@ -7,11 +7,8 @@ from config import bot
 
 @bot.message_handler(commands=["restart"])
 def restart_tarkov_bot(message: types.Message):
-    try:
-        subprocess.Popen(["./script.sh"], shell=False)
-    except:
-        bot.reply_to(message, 'Ошибка при выполнении рестарта')
-        return
+
+    subprocess.Popen(["./script.sh"], shell=False)
 
     bot.reply_to(message, 'Рестарт выполнен')
 
