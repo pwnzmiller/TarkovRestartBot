@@ -7,10 +7,13 @@ from config import bot
 
 @bot.message_handler(commands=["restart"])
 def restart_tarkov_bot(message: types.Message):
+    LINE = ''
 
-    subprocess.Popen(["sh", "script.sh"], shell=False)
+    proc = subprocess.Popen(["sh", "script.sh"], shell=False, stdout=subprocess.PIPE)
 
-    bot.reply_to(message, 'Рестарт выполнен')
+    output = proc.stdout.read()
+
+    bot.reply_to(message, output)
 
 
 if __name__ == '__main__':
