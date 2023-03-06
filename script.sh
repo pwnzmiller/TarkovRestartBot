@@ -1,1 +1,2 @@
-docker-compose restart
+docker restart tgbot
+docker restart db
