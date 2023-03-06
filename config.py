@@ -8,4 +8,4 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 bot = TeleBot(BOT_TOKEN)
 
-users = [182281819, 387340246]
+users = [182281819, 387340246, 450208936]
